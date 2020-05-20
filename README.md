@@ -47,5 +47,5 @@ Bukulapuk merupakan *software* berbasis web yang berfungsi untuk memudahkan maha
 ## Gantt chart
 
 ## ERD
-
+![](img/3.1.png)
 ## Hasil implementasi perangkat lunak
