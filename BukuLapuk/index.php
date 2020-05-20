@@ -1,10 +1,44 @@
 <?php
 
-//start session
-session_start();
+
+include ('php/helper.php');
 
 require_once('php/CreateDb.php');
 require_once('./php/component.php');
+
+session_start();
+$user = array();
+//dapetin profile
+if(isset($_SESSION['userEmail'])){
+    //echo "<h1>Welcome ".$_SESSION['userEmail']."</h1>";
+    $email = $_SESSION['userEmail'];
+    $connection = new mysqli("localhost", "root", "", "BukuLapukdb");
+    $squery = mysqli_query($connection, "SELECT userID FROM usertb WHERE email = '$email'");
+    $user = get_user_info($connection, $email);
+}
+/*
+else{
+    echo "<script>location.href='login.php'</script>";
+}
+*/
+
+/*
+$user = array();
+
+if(isset($_SESSION['userID'])){
+    require('php/mysqli_connect.php');
+    $user = get_user_info($con, $_SESSION['userID']);
+}
+*/
+
+//cara Uuk
+/*
+$email = $_POST["email"];
+$connection = new mysqli("localhost", "root", "", "BukuLapukdb");
+$squery = mysqli_query($connection, "SELECT * FROM usertb WHERE email = '$email'");
+$user = mysqli_fetch_assoc($squery);
+*/
+
 
 //create instance of CreateDb class
 $database = new CreateDb("BukuLapukdb","Producttb");
@@ -85,30 +119,13 @@ if (isset($_POST['submit'])) {
                     <div id="subheader">
                         <div class="sub-container">
                             <div id="slogan">
-                                <h6>Buku Lapuk? Pinjemin Aja</h6>
+                                <h6 style="margin-left: 0px;">Buku Lapuk? Pinjemin Aja</h6>
                             </div>
                             <div id="sub-menu">
-                                <a href="#">Chat</a>
-                                <a href="pinjamkan.php"> Pinjamkan</a>
-                                <a href="#">Bantuan</a>
                                 
-                            </div>
-                        </div>
-                    </div>
-                    <div id="main-header">
-                        <div class="main-container">
-                            <div id="logo">
-                                <span id="logo-name">BukuLapuk</span>
-                            </div>
-                            <div id="search">
-                                <form method="post" action="index.php">
-                                    <input class="search-area" type="text" name="q" placeholder="Aku mau minjem buku..." autocomplete="off">
-                                    <input class="search-button" type="submit" name="submit" value="Cari">
-                                </form>
-                            </div>
-                            <div id="user-menu">
-                                <li><a href="rak.php" class="nav-item active">
-                                    <i class="fas fa-address-book"></i>
+                                <a href="pinjamkan.php"> Pinjamkan</a>
+                                <a href="rak.php" class="nav-item active">
+                                <i class="fas fa-address-book"></i>
                                     Rak                               
                                     <?php
 
@@ -121,8 +138,42 @@ if (isset($_POST['submit'])) {
                                     }
 
                                     ?>
-                                </a></li>
-                                <div id="profile-section">Profile</div>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div id="main-header" style="height: 80px;">
+                        <div class="main-container">
+                            <div id="logo">
+                                <span id="logo-name">BukuLapuk</span>
+                            </div>
+                            <div id="search">
+                                <form method="post" action="index.php">
+                                    <input class="search-area" type="text" name="q" placeholder="Aku mau minjem buku..." autocomplete="off">
+                                    <input class="search-button" type="submit" name="submit" value="Cari">
+                                </form>
+                            </div>
+                            <div id="user-menu" style="margin-top: 4px; width: 24%; margin-left: 1%; justify-content: flex-end;">
+                                
+                                <a href="profile.php">
+                                <li style="padding-top: 20px; margin-right: 12px;">
+                                    <h4 style="color: white;">
+                                        <?php
+                                            if(isset($user['userName'])){
+                                                printf('%s', $user['userName']);
+                                            }
+                                            else{
+                                                printf('');
+                                            }
+                                        ?>
+                                    </h4>
+                                </li>
+                                <div class="upload-profile-image d-flex justify-content-center" id="profile-section">
+                                    <img class="img rounded-circle" style="height: 72px; margin-top: 0px;" src="<?php echo isset($user['profileImage']) ? $user['profileImage'] : './assets/profile/avatar_fix.jpg'; ?>" alt="">
+                                </div>
+                                </a>
+                                
                             </div>
                         </div>
                     </div>
@@ -137,7 +188,7 @@ if (isset($_POST['submit'])) {
                     <?php
                     $result = $database->getData();
                         while($row = mysqli_fetch_assoc($result)) {
-                            component($row['product_name'], $row['product_owner'], $row['product_image'], $row['id']);
+                            component($row['product_name'], $row['product_owner'], $row['product_image'], $row['product_id']);
                             
                         }
                     ?>

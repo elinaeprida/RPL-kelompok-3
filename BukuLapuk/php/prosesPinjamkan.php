@@ -12,6 +12,7 @@ if(isset($_POST['pinjamkan-sekarang'])) {
     //echo "<pre>", print_r($_FILES['fotoBuku']['name']), "</pre>"; // langsung menampilkan isi kolom nama
     //die();
 
+    $_POST['pemilikBuku'] = $user['userName'];
     $judulBuku = $_POST['judulBuku'];
     $pemilikBuku = $_POST['pemilikBuku'];
     $deskripsiBuku = $_POST['deskripsiBuku'];

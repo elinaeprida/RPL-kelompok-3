@@ -15,6 +15,7 @@ if(empty($password)){
 if(empty($error)){
     //sql query
     $query = "SELECT userID, userName, email, password, profileImage FROM usertb WHERE email=?";
+    
     $q = mysqli_stmt_init($con);
     mysqli_stmt_prepare($q, $query);
 
@@ -31,8 +32,14 @@ if(empty($error)){
     if(!empty($row)){
         //verify password
         if(password_verify($password, $row['password'])){
+            
+            //start session
+            
+            $_SESSION['userEmail'] = $email;
+
             header("location: index.php");
             exit();
+            
         }
     }
     else{

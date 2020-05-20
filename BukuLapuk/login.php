@@ -1,18 +1,22 @@
+
 <?php
 
     session_start();
+    
     //header.php
     include('php/header.php');
     include "php/helper.php";
 ?>
 
 <?php
-    $user = array();
+   
+//    $user = array();
     require('php/mysqli_connect.php');
-
-    if(isset($_SESSION['userID'])){
-        $user = get_user_info($con, $_SESSION['userID']);
+/*    
+    if(isset($_SESSION["userID"])){
+        $user = get_user_info($con, $_SESSION["userID"]);
     }
+*/
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require('php/prosesLogin.php');
@@ -24,7 +28,7 @@
     background: url('assets/background.jpg') no-repeat;
     background-size: cover;">
         <div class="row m-0">
-            <div class="col-lg-4 offset-lg-2">
+            <div class="col-lg-4 offset-lg-2 shadow" style="background: rgba(255, 255, 255, 0.25); border-radius: 4px;">
                 <div class="text-center pb-4">
                     <h1 class="login-title text-dark">Login</h1>
                     <p class="p-1 m-0 font-ubuntu text-black-50">Login dan pinjamkan buku lapuk mu :)</p>
@@ -52,7 +56,7 @@
                         </div>
                        
                         <div class="submit-btn text-center my-3">
-                            <button type="submit" class="btn btn-primary rounded-pill text-dark px-4">Login</button>
+                            <button type="submit" name="submit" class="btn btn-primary rounded-pill text-dark px-4">Login</button>
                         </div>
                     </form>
                 </div>

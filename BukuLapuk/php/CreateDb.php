@@ -40,7 +40,7 @@ class CreateDb {
             
             //sql to create new table
             $sql = "CREATE TABLE IF NOT EXISTS $tablename
-                    (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    (product_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                     product_name VARCHAR(50) NOT NULL,
                     product_owner VARCHAR(50) NOT NULL,
                     product_image VARCHAR(100) NOT NULL,

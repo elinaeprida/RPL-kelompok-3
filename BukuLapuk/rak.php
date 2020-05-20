@@ -1,6 +1,20 @@
 <?php
 
+include ('php/helper.php');
 session_start();
+
+$user = array();
+//dapetin profile
+if(isset($_SESSION['userEmail'])){
+    //echo "<h1>Welcome ".$_SESSION['userEmail']."</h1>";
+    $email = $_SESSION['userEmail'];
+    $connection = new mysqli("localhost", "root", "", "BukuLapukdb");
+    $squery = mysqli_query($connection, "SELECT userID FROM usertb WHERE email = '$email'");
+    $user = get_user_info($connection, $email);
+}
+else{
+    echo "<script>location.href='login.php'</script>";
+}
 
 require_once("php/CreateDb.php");
 require_once("php/component.php");
@@ -20,6 +34,12 @@ if(isset($_POST['remove'])) {
         }
     }
 }
+
+if(isset($_POST['kembali'])){
+header("Location: index.php");
+exit;
+}
+                       
 
 ?>
 
@@ -55,8 +75,8 @@ if(isset($_POST['remove'])) {
                             $result = $db->getData();
                             while($row = mysqli_fetch_assoc($result)) {
                                 foreach($product_id as $id) {
-                                    if($row['id']==$id) {
-                                        ractElement($row['product_image'], $row['product_name'], $row['product_owner'], $row['id']);
+                                    if($row['product_id']==$id) {
+                                        ractElement($row['product_image'], $row['product_name'], $row['product_owner'], $row['product_id']);
                                     }
                                 }
                             }
@@ -70,8 +90,10 @@ if(isset($_POST['remove'])) {
                     </div>
                 </div>
                 <div class="col-md-5">
-                        <button type="submit" name="kembali" style="padding: 3% 0;">Kembali ke Index.php</button>
-                        <button onclick="history.go(-1);">Back </button>
+                    <form action="rak.php" method="post">
+                        <input type='submit' name='kembali' value='Back to Home' class='register' />
+                    </form>
+                        
                 </div>
             </div>
         </div>

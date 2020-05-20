@@ -26,7 +26,7 @@ function upload_profile($path, $file){
     $default = "avatar_fix.jpg";
 
     //get the filename
-    $filename = basename($file['name']);
+    $filename = time() . '_' . basename($file['name']);
     $targetFilePath = $targetDir . $filename;
 
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
@@ -47,14 +47,14 @@ function upload_profile($path, $file){
 }
 
 //dapetin user info
-function get_user_info($con, $userID){
-    $query = "SELECT userName, email, profileImage FROM usertb WHERE userID=?";
+function get_user_info($con, $email){
+    $query = "SELECT * FROM usertb WHERE email=?";
     $q = mysqli_stmt_init($con);
 
     mysqli_stmt_prepare($q, $query);
 
     //bind the statement
-    mysqli_stmt_bind_param($q, 'i', $userID);
+    mysqli_stmt_bind_param($q, 's', $email);
 
     //execute sql statement
     mysqli_stmt_execute($q);

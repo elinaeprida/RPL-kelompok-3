@@ -1,6 +1,21 @@
 <?php
 
-include "php/prosesPinjamkan.php"
+
+include ('php/helper.php');
+session_start();
+$user = array();
+//dapetin profile
+if(isset($_SESSION['userEmail'])){
+    //echo "<h1>Welcome ".$_SESSION['userEmail']."</h1>";
+    $email = $_SESSION['userEmail'];
+    $connection = new mysqli("localhost", "root", "", "BukuLapukdb");
+    $squery = mysqli_query($connection, "SELECT userID FROM usertb WHERE email = '$email'");
+    $user = get_user_info($connection, $email);
+}
+else{
+    echo "<script>location.href='login.php'</script>";
+}
+include "php/prosesPinjamkan.php";
 
 ?>
 

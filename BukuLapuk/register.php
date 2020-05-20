@@ -14,7 +14,7 @@
     background: url('assets/background.jpg') no-repeat;
     background-size: cover;">
         <div class="row m-0">
-            <div class="col-lg-4 offset-lg-2">
+            <div class="col-lg-4 offset-lg-2 shadow" style="background: rgba(255, 255, 255, 0.25); border-radius: 4px;">
                 <div class="text-center pb-4">
                     <h1 class="login-title text-dark">Register</h1>
                     <p class="p-1 m-0 font-ubuntu text-black-50">Register sekarang dan cari buku yang kamu inginkan :)</p>
@@ -41,24 +41,24 @@
                         </div>
                         <div class="form-row my-2">
                             <div class="col">
-                                <input type="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required name="email" id="email" class="form-control" placeholder="Email">
+                                <input type="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required name="email" id="email" class="form-control" placeholder="Email*">
                             </div>
                         </div>
                         <div class="form-row my-2">
                             <div class="col">
-                                <input type="password" required name="password" id="password" class="form-control" placeholder="Password">
+                                <input type="password" required name="password" id="password" class="form-control" placeholder="Password*">
                             </div>
                         </div>
                         <div class="form-row my-2">
                             <div class="col">
-                                <input type="password" required name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
+                                <input type="password" required name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password*">
                                 <small id="confirm_error" class="text-danger"></small>
                             </div>
                         </div>
 
                         <div class="form-check form-check-inline">
                             <input type="checkbox" name="agreement" class="form-check-input" required>
-                            <label for="agreement" class="form-check-label font-ubuntu text-black-50">I agree <a href="#">term and condition</a>(*)</label>
+                            <label for="agreement" class="form-check-label font-ubuntu text-white">I agree <a href="#">term and condition</a>(*)</label>
                         </div>
 
                         <div class="submit-btn text-center my-3">

@@ -52,18 +52,21 @@ if(empty($error)){
 
    if(mysqli_stmt_affected_rows($q)==1){
        //print "recoded successfully inserted...!";
+/*
        //start new session
        session_start();
 
        //create session variable
        $_SESSION['userID'] = mysqli_insert_id($con);
-
+*/
        header('location: login.php');
        exit();
+
    }
    else{
        print "Error while registration...!";
    }
+
 }
 else{
     echo 'not validate';
