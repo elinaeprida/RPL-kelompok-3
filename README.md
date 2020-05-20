@@ -43,7 +43,7 @@ Bukulapuk merupakan *software* berbasis web yang berfungsi untuk memudahkan maha
 ![](img/1.3.PNG)
 ![](img/1.4.PNG)
 ## Activity diagram
-
+Target dari aplikasi kita adalah mahasiswa yang kesulitan dalam hal pinjam-meminjam buku. 
 ## Gantt chart
 
 ## ERD
