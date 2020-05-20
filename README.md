@@ -36,7 +36,7 @@ Bukulapuk merupakan *software* berbasis web yang berfungsi untuk memudahkan maha
 * Sebagai seorang mahasiswa, saya ingin meminjam buku dengan mudah kepada sesama mahasiswa di IPB.
 * Sebagai seorang mahasiswa, saya ingin meminjamkan buku dengan mudah kepada sesama mahasiswa di IPB.
 ## Use case diagram
-
+![](img/2.1.jpeg)
 ## Use case description 
 ![](img/1.1.PNG)
 ![](img/1.2.PNG)
