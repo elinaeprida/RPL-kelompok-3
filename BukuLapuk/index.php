@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
     if ($sql->num_rows > 0) {
         while ($row = $sql->fetch_array()){
         //while($row = mysqli_fetch_assoc($sql)) {
-            component($row['product_name'], $row['product_owner'], $row['product_image'], $row['id']);
+            component($row['product_name'], $row['product_owner'], $row['product_image'], $row['product_id']);
         }
     }
     else {
