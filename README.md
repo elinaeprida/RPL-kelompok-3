@@ -47,7 +47,7 @@ Target dari aplikasi kita adalah mahasiswa yang kesulitan dalam hal pinjam-memin
 ![](img/4.2.PNG)
 ![](img/4.3.PNG)
 ## Gantt chart
-
+![](img/5.1.jpeg)
 ## ERD
 ![](img/3.1.png)
 ## Hasil implementasi perangkat lunak
